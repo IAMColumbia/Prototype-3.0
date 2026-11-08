@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public InputAction jumpAction;
     public float jumpForce = 10;
     public float gravityModifier;
+    public bool isOnGround = true;
 
     void Start()
     {
@@ -22,6 +23,12 @@ public class PlayerController : MonoBehaviour
         if (jumpAction.triggered)
         {
             playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isOnGround = false;
         }
+    }
+    
+    private void OnCollisionEnter(Collision Collision)
+    {
+        isOnGround = true;
     }
 }
