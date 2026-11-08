@@ -220,6 +220,8 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
     m_Priority: 0
+  jumpForce: 10
+  gravityModifier: 1
 --- !u!65 &42382235
 BoxCollider:
   m_ObjectHideFlags: 0

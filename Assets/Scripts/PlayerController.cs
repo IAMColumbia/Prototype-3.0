@@ -1,16 +1,18 @@
 using UnityEngine;
-using System.Collections.Generic;
-using System.Collections;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRB;
     public InputAction jumpAction;
+    public float jumpForce = 10;
+    public float gravityModifier;
 
     void Start()
     {
         playerRB = GetComponent<Rigidbody>();
+        Physics.gravity *= gravityModifier;
+
         jumpAction.Enable();
     }
 
@@ -19,7 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         if (jumpAction.triggered)
         {
-            playerRB.AddForce(Vector3.up * 10, ForceMode.Impulse);
+            playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 }
